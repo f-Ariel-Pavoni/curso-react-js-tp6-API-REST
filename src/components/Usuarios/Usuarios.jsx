@@ -14,33 +14,31 @@ const Usuarios = () => {
     cargarUsuarios();
   }, []);
 
+  const formatearUsuarios = (usuarios) => {
+    return usuarios.map((usuario) => {
+      return {
+        id: usuario.id,
+        nombre: usuario.name,
+        email: usuario.email,
+      };
+    });
+  };
+
   const cargarUsuarios = async () => {
     setLoading(true);
     setError("");
-
     //simular que la api demora
     //await new Promise((resolve) => setTimeout(resolve, 2000));
-
     try {
       const respuesta = await fetch(
         "https://jsonplaceholder.typicode.com/users",
       );
-
       if (!respuesta.ok) {
         throw new Error("Error al obtener usuarios.");
       }
-
       const datos = await respuesta.json();
 
-      const usuariosDepurados = datos.map((usuario) => {
-        return {
-          id: usuario.id,
-          nombre: usuario.name,
-          email: usuario.email,
-        };
-      });
-
-      setUsuarios(usuariosDepurados);
+      setUsuarios(formatearUsuarios(datos));
     } catch (error) {
       setError(error.message);
     } finally {
