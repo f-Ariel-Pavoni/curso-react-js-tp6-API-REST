@@ -1,0 +1,19 @@
+.usuarios-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 3rem;
+  background-color: #d4d4d7;
+  border-radius: 12px;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.usuarios-header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.usuarios-header .buscador {
+  flex: 1;
+}

@@ -1,0 +1,14 @@
+.tarjeta {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+}
+
+.tarjeta:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.valor-truncado {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
