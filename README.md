@@ -118,7 +118,7 @@ Esto evita mezclar lógica de negocio con componentes visuales, manteniendo el c
 ### 1. Clonar el repositorio
 
 ```bash
-git clone URL_DEL_REPOSITORIO
+git clone https://github.com/f-Ariel-Pavoni/curso-react-js-tp6-API-REST.git
 ```
 
 ### 2. Ingresar al directorio del proyecto
