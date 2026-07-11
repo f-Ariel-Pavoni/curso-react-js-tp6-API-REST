@@ -159,7 +159,7 @@ La aplicación estará disponible en la dirección indicada por Vite.
 
 ### Error cargando
 
-## ![Error cargando](./public/assets/screenshots/error_cargando.png)
+## ![Error cargando](./public/assets/screenshots/Error_cargando.png)
 
 ### Error recargando
 
