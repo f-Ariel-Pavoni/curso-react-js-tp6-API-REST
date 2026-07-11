@@ -94,6 +94,8 @@ Los datos recibidos desde la API son normalizados antes de ser utilizados.
 
 Esto permite agregar nuevos campos provenientes de la API sin necesidad de modificar el componente.
 
+Se optó por utilizar componentes `UsuarioCard` dentro de un contenedor en lugar de una lista `ul`, ya que cada usuario representa una unidad de información independiente y facilita la escalabilidad del componente.
+
 ---
 
 ### Manejo de estados
@@ -110,6 +112,7 @@ La aplicación contempla diferentes estados de ejecución:
 
 La transformación y adaptación de datos se encuentra separada en funciones auxiliares dentro de `utils`.
 Esto evita mezclar lógica de negocio con componentes visuales, manteniendo el código más organizado y fácil de mantener.
+
 
 ---
 
