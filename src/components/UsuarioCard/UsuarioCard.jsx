@@ -1,10 +1,7 @@
 import "./UsuarioCard.css";
+import { capitalize } from "../../utils/capitalize";
 
 const UsuarioCard = ({ usuario }) => {
-  const capitalize = (word) => {
-    return word[0].toUpperCase() + word.slice(1).toLowerCase();
-  };
-
   const obtenerIcono = (key) => {
     if (key.toLowerCase() === "nombre") return "👤";
     if (key.toLowerCase() === "email") return "✉️";

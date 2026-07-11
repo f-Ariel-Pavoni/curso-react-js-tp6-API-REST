@@ -2,27 +2,15 @@ import { useState, useEffect, useMemo } from "react";
 import ListaUsuarios from "../ListaUsuarios/ListaUsuarios.jsx";
 import Buscador from "../Buscador/Buscador.jsx";
 import BotonRecargar from "../BotonRecargar/BotonRecargar";
+import ModalEstado from "../ModalEstado/ModalEstado.jsx";
 import "./Usuarios.css";
+import { normalizarUsuarios } from "../../utils/normalizarUsuarios.js";
 
 const Usuarios = () => {
   const [busqueda, setBusqueda] = useState("");
   const [usuarios, setUsuarios] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
-  useEffect(() => {
-    cargarUsuarios();
-  }, []);
-
-  const formatearUsuarios = (usuarios) => {
-    return usuarios.map((usuario) => {
-      return {
-        id: usuario.id,
-        nombre: usuario.name,
-        email: usuario.email,
-      };
-    });
-  };
 
   const cargarUsuarios = async () => {
     setLoading(true);
@@ -38,13 +26,17 @@ const Usuarios = () => {
       }
       const datos = await respuesta.json();
 
-      setUsuarios(formatearUsuarios(datos));
+      setUsuarios(normalizarUsuarios(datos));
     } catch (error) {
       setError(error.message);
     } finally {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    cargarUsuarios();
+  }, []);
 
   const handleRecargar = () => {
     setBusqueda("");
@@ -57,16 +49,22 @@ const Usuarios = () => {
     );
   }, [usuarios, busqueda]);
 
-  if (error) {
-    return <p>{error}</p>;
-  }
-
   if (loading && usuarios.length === 0) {
     return <p>Cargando usuarios...</p>;
   }
 
   return (
     <div className="container py-4 usuarios-container">
+      {error && (
+        <ModalEstado
+          tipo="error"
+          mensaje={error}
+          accion={cargarUsuarios}
+          textoAccion="Reintentar"
+          onClose={() => setError("")}
+        />
+      )}
+
       <div className="usuarios-header">
         <Buscador busqueda={busqueda} setBusqueda={setBusqueda} />
         <BotonRecargar recargar={handleRecargar} loading={loading} />
