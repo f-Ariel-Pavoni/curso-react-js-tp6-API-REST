@@ -15,8 +15,7 @@ const Usuarios = () => {
   const cargarUsuarios = async () => {
     setLoading(true);
     setError("");
-    //simular que la api demora
-    //await new Promise((resolve) => setTimeout(resolve, 2000));
+
     try {
       const respuesta = await fetch(
         "https://jsonplaceholder.typicode.com/users",
